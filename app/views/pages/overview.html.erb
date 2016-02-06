@@ -1,0 +1,32 @@
+<h2> Database Readout Test</h2>
+ 
+<p>  Download:  <%= link_to "CSV", overview_path(format: "csv") %>
+</p>
+
+  <% if flash[:success]%>
+    <%= Time.now %>
+  
+  <% else %>
+  
+    <h2>Import User CSV</h2>
+    <%= form_tag import_pages_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import" %>
+    <% end %>
+ 
+  <% end %>
+
+
+<% @user.each do |user| %>
+    
+
+<div class = "row">
+  <div class="col-md-4 col-md-offset-2">
+      <div class="well text-center ">
+          <h4><%=user.first_name%> <%=user.last_name %>'s Birthday</h4>
+        <%= user.birthday%>  
+      </div>
+  </div>
+</div>
+  
+  <%end%>
